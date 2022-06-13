@@ -1,3 +1,4 @@
+#!/bin/bash
 #Escribir un script que muestre por consola los números del 1 al 5. 
 
 i=1
