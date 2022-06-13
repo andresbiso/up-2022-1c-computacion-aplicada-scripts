@@ -1,24 +1,6 @@
 #!/bin/bash
 #Escribir un script que reciba como parámetro una cadena de caracteres y determinar si es palíndromo o no.
 
-concatenar_argumentos()
-{
-    CADENA=""
-    # Recorro argumentos
-    for ARGUMENTO in "$@" 
-    do
-        # Ignoro los flags
-        if [[ "${ARGUMENTO:0:1}" != "-" ]]; then
-          if [[ "$CADENA" != "" ]]; then
-            CADENA+="$ARGUMENTO"
-            echo "$ARGUMENTO"
-          fi
-        fi
-    done
-    echo "$CADENA"
-}
-
-
 es_palindromo() {
   CADENA=$1
   LARGO=$((${#CADENA} - 1))
@@ -33,11 +15,9 @@ es_palindromo() {
   return 0
 }
 
-#CADENA=`concatenar_argumentos $@`
-#echo "$CADENA"
-#echo "$@"
-#echo "$*"
-if es_palindromo $1; then 
+# Elimino espacios en blanco de la cadena ingresada
+CADENA=`echo ${1//[[:blank:]]/}`
+if es_palindromo $CADENA; then 
   echo "La cadena de caracteres es un palíndromo" 
 else
   echo "La cadena de caracteres no es un palíndromo"
