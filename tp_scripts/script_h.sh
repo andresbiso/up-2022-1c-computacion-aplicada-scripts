@@ -6,9 +6,29 @@
 #iv) Pedir un nombre de directorio y crearlo. Si no se puede crear, personalizar el error. 
 #v) Salir (saludando al usuario que ejecutó el programa). 
 #Si se presiona otra tecla, mostrar "Opción incorrecta". 
+# Aclaración: correr script cómo ". nombrescript" para que se puedan visualizar los cambios ya que, de esa manera, no se ejecuta en una child shell.
+
+mostrar_dir_actual() {
+  echo "Directorio Actual: " 
+  echo $PWD 
+}
+
+cambiar_dir_actual() {
+  read -p "Ingrese un directorio: " DIRECTORIO
+  if [[ -d "$DIRECTORIO" ]]; then
+    cd "$DIRECTORIO"
+    mostrar_dir_actual
+  else
+    echo "El directorio ingresado no existe o es inválido"
+  fi
+}
+
+listar_dir_actual() {
+  find . -maxdepth 1 -type f
+}
+
 while true; do
   echo "MENU:"
-  echo ""
   echo "1 - Mostrar Directorio Actual"
   echo "2 - Cambiar Directorio Actual"
   echo "3 - Listar Archivos Directorio Actual"
