@@ -4,7 +4,7 @@
 PALABRA=$1
 ARCHIVO=$2
 
-if grep -q "$ARCHIVO" "$PALABRA"; then
+if grep -q "$PALABRA" "$ARCHIVO"; then
   echo "Palabra encontrada"
 else
   echo "Palabra no encontrada"
