@@ -27,6 +27,19 @@ listar_dir_actual() {
   find . -maxdepth 1 -type f
 }
 
+crear_dir() {
+  read -p "Ingrese el nombre del nuevo directorio: " DIRECTORIO
+  if [ ! -d "$DIRECTORIO" ]; then
+    mkdir -p "$DIRECTORIO"
+  else
+    echo "El directorio elegido ya existe"
+  fi
+}
+
+salir() {
+  echo "¡Hasta luego $LOGNAME!"
+}
+
 while true; do
   echo "MENU:"
   echo "1 - Mostrar Directorio Actual"
@@ -42,7 +55,7 @@ while true; do
     2) cambiar_dir_actual;;
     3) listar_dir_actual;;
     4) crear_dir;;
-    5) salir;;
+    5) salir;return;;
     *) echo "Opción incorrecta";;
   esac
 done
